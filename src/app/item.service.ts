@@ -42,7 +42,7 @@ export class ItemService {
       // console.log(error)
       if(error.error.errors){
         for(let message of error.error.errors){
-          this.messageService.addMessage(message.join('ghghghjh '));
+          this.messageService.addMessage(message.join(''));
         }
       }
       console.log(this.messageService.messages);

@@ -27,7 +27,7 @@ export class ItemComponent implements OnInit {
 
   sendPost(){
     let postData = {
-      name : "Dish Oct 18" ,
+      name : "Dish Oct 42" ,
       taxes_id : 17,
       units_id : 1,
       base : 750,
@@ -38,10 +38,12 @@ export class ItemComponent implements OnInit {
         hsn_code : "abs",
         min : 2,
         max : 10,
-        Branches_id : 16
+        branches_id : 16,
+        is_perishable :1
       },
       category_ids : [116]
     }
+    
     this.itemService.sendPost(postData).subscribe(postResponse => this.getItems());
-    // console.log(this.messageService.messages)});
+    
   }}
