@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, from } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Response } from './response';
 import { MessageService } from './message.service';
+
+// import { additems } from './additems';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'users_id':'23', 'token':'ChTWCsUm3Lr6Da0vYkYyW1H1qeJnom8YQg4rVMvxYVLWAoURG8f5q7Id3BfaLKBgXecCWFWLgtTRU1BMZqdLv08UNwFRmfnCuDUBZTZ1BUulPYXjJQuoiku7flMGYNFecNYI6XD8BxFs6cd1eGlVuNTOFa2R9Vn3K4ZHVVI6T9MlQHXCWOJXr7MRKerFLmnlmDThuQxb' })
@@ -16,7 +18,8 @@ export class ItemService {
 
   constructor(
     private http:HttpClient,
-    private messageService:MessageService
+    private messageService:MessageService,
+    public ItemComponent
   ) { }
 
   getItems(): Observable<Response>{
@@ -25,12 +28,15 @@ export class ItemService {
       catchError(this.handleError<Response>('getItems'))
     );
   }
+  
 
-  sendPost(data:any):Observable<any>{
+  sendPost(postData):Observable<any>{
+    console.log("haiiiiii");
     let url = 'http://test-items.subdineapis.com/items';
-    return this.http.post<any>(url,data,httpOptions).pipe(
-      catchError(this.handleError<any>('getItems'))
-    );
+    return this.http.post<any>(url,postData,httpOptions);
+    // .pipe(
+    //   catchError(this.handleError<any>('getItems'))
+    // );
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

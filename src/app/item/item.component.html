@@ -1,5 +1,96 @@
-<button (click)="sendPost()">Send post request</button>
-<p *ngFor="let message of messageService.messages">{{message}}</p>
+<!-- <button (click)="sendPost()">Send post request</button> -->
+<div class="container" > <!--*ngIf="additem"-->
+  <h3>Add item</h3>
+  <form (ngSubmit)="sendPost()" >
+    <div class="form-group">
+      <label for="Name">Name</label>
+      <input type="name"   [(ngModel)]="postData.name" class="form-control" name="name" #name = "ngModel">
+      <label for="taxes_id">taxes_id</label>
+      <input type="text"  id="taxes_id" required [(ngModel)]="postData.taxes_id" class="form-control" name="taxes_id" #taxes_id = "ngModel">
+      <label for="units_id">units_id</label>
+      <input type="text"  id="units_id" required [(ngModel)]="postData.units_id" class="form-control" name="units_id" #units_id = "ngModel">
+      <label for="base">base</label>
+      <input type="text"   id="base" required [(ngModel)]="postData.base"  class="form-control"  name="base"#base = "ngModel">
+      <label for="is_negative">is_negative</label>
+      <input type="checkbox"  id="is_negative" required [(ngModel)]="postData.is_negative"  class="form-control" name="is_negative" #is_negative = "ngModel" value="true">
+      <label for="title">item_details</label>
+      <!-- <input type="text"  class="form-control" id="item_details" required [(ngModel)]="item.item_details" name="item_details" #item_details = "ngModel"> -->
+        <label for="price">price</label>
+      <input type="text"  id="price" required [(ngModel)]="postData.price" class="form-control" name="price" #price = "ngModel">
+      <label for="hsn_code">hsn_code</label>
+      <input type="text"  id="hsn_code" required [(ngModel)]="postData.hsn_code" class="form-control" name="hsn_code" #hsn_code = "ngModel">
+      <label for="min">min</label>
+      <input type="text"  id="min" required [(ngModel)]="postData.min" class="form-control" name="min" #min = "ngModel">
+      <label for="max">max</label>
+      <input type="text"  id="max" required [(ngModel)]="postData.max" class="form-control" name="max" #max = "ngModel">
+      <label for="branches_id">branches_id </label>
+      <input type="text"  id="branches_id" required [(ngModel)]="postData.branches_id" class="form-control" name="branches_id" #branches_id = "ngModel">
+      <label for="is_perishable">is_perishable</label>
+      <input type="checkbox"  id="is_perishable" required [(ngModel)]="postData.is_perishable" class="form-control" name="is_perishable" #is_perishable = "ngModel" value="true">
+      
+      <label for="category_ids">category_ids</label>
+      <input type="text"  id="category_ids" required [(ngModel)]="postData.category_ids" class="form-control" name="category_ids" #category_ids = "ngModel">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+    </form> 
+  </div> 
+
+
+
+
+  <!-- <form (ngSubmit)="sendPost(itemForm)" #itemForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text"  class="form-control" id="name" required [(ngModel)]="item.name" name="name" #name = "ngModel">
+      <label for="title">taxes_id</label>
+      <input type="text"  class="form-control" id="taxes_id" required [(ngModel)]="item.taxes_id" name="taxes_id" #taxes_id = "ngModel">
+      <label for="title">units_id</label>
+      <input type="text"  class="form-control" id="units_id" required [(ngModel)]="item.units_id" name="units_id" #units_id = "ngModel">
+      <label for="title">base</label>
+      <input type="text"  class="form-control" id="base" required [(ngModel)]="item.base" name="base" #base = "ngModel">
+      <label for="title">item_details</label>
+      <input type="text"  class="form-control" id="item_details" required [(ngModel)]="item.item_details" name="item_details" #item_details = "ngModel">
+      <label for="title">price</label>
+      <input type="text"  class="form-control" id="price" required [(ngModel)]="item.price" name="price" #price = "ngModel">
+      <label for="title">hsn_code</label>
+      <input type="text"  class="form-control" id="hsn_code" required [(ngModel)]="item.hsn_code" name="hsn_code" #hsn_code = "ngModel">
+      <label for="title">branches_id </label>
+      <input type="text"  class="form-control" id="branches_id" required [(ngModel)]="item.branches_id" name="branches_id" #branches_id = "ngModel">
+      <label for="title">category_ids</label>
+      <input type="text"  class="form-control" id="category_ids" required [(ngModel)]="item.category_ids" name="category_ids" #category_ids = "ngModel">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+    </form> 
+     -->
+     <!-- <label for="Name">Name</label>
+      <input type="text"  id="name" required [(ngModel)]="additem.name" name="name" #name = "ngModel">
+      <label for="taxes_id">taxes_id</label>
+      <input type="text"  id="taxes_id" required [(ngModel)]="additem.taxes_id" name="taxes_id" #taxes_id = "ngModel">
+      <label for="units_id">units_id</label>
+      <input type="text"  id="units_id" required [(ngModel)]="additem.units_id" name="units_id" #units_id = "ngModel">
+      <label for="base">base</label>
+      <input type="text"  class="form-control" id="base" required [(ngModel)]="additem.base" name="base" #base = "ngModel">
+      <label for="is_negative">is_negative</label>
+      <input type="checkbox"  id="is_negative" required [(ngModel)]="additem.is_negative" name="is_negative" #is_negative = "ngModel" value="true">
+      <label for="title">item_details</label>
+      <!-- <input type="text"  class="form-control" id="item_details" required [(ngModel)]="item.item_details" name="item_details" #item_details = "ngModel"> -->
+      <!-- <label for="price">price</label>
+      <input type="text"  id="price" required [(ngModel)]="additem.price" name="price" #price = "ngModel">
+      <label for="hsn_code">hsn_code</label>
+      <input type="text"  id="hsn_code" required [(ngModel)]="additem.hsn_code" name="hsn_code" #hsn_code = "ngModel">
+      <label for="min">min</label>
+      <input type="text"  id="min" required [(ngModel)]="additem.min" name="min" #min = "ngModel">
+      <label for="max">max</label>
+      <input type="text"  id="max" required [(ngModel)]="additem.max" name="max" #max = "ngModel">
+      <label for="branches_id">branches_id </label>
+      <input type="text"  id="branches_id" required [(ngModel)]="additem.branches_id" name="branches_id" #branches_id = "ngModel">
+      <label for="is_perishable">is_perishable</label>
+      <input type="checkbox"  id="is_perishable" required [(ngModel)]="additem.is_perishable" name="is_perishable" #is_perishable = "ngModel" value="true">
+      <label for="category_ids">category_ids</label>
+      <input type="text"  id="category_ids" required [(ngModel)]="additem.category_ids" name="category_ids" #category_ids = "ngModel">
+      <button type="submit" class="btn btn-success">Submit</button> --> 
+  
+      <!-- <p *ngFor="let message of messageService.messages">{{message}}</p> -->
 <table>
   <tr>
     <th>id</th>
